@@ -109,7 +109,7 @@ def get_videos():
     request = youtube.search().list(
         part="id,snippet",
         channelId=channel_id,
-        maxResults=5,
+        maxResults=10,
         order="date",
         type="video",
         videoDuration="short"
