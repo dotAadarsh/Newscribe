@@ -1,1 +1,3 @@
-# blog-it
+# Newscriber
+
+## Bringing news to life, one story at a time.
