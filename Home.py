@@ -64,15 +64,19 @@ def get_keywords(transcript):
 
 @st.cache_data
 def generateImage(imagePrompt):
-    response = openai.Image.create(
-    prompt= imagePrompt,
-    n=1,
-    size="256x256"
-    )
-    image_url = response['data'][0]['url']
+    try:
+        response = openai.Image.create(
+        prompt= imagePrompt,
+        n=1,
+        size="256x256"
+        )
 
-    return image_url
+        image_url = response['data'][0]['url']
 
+        return image_url
+
+    except:
+        return ""
 @st.cache_data
 def generateBlog(transcript):
 
@@ -109,7 +113,7 @@ def get_videos():
     request = youtube.search().list(
         part="id,snippet",
         channelId=channel_id,
-        maxResults=10,
+        maxResults=8,
         order="date",
         type="video",
         videoDuration="short"
@@ -145,7 +149,11 @@ def main():
 
                 with col1:
                     imagePrompt = video["title"].split("|")[0].strip()
-                    st.image(generateImage(imagePrompt))
+                    image_url = generateImage(imagePrompt)
+                    if image_url != "":
+                        st.image(image_url)
+                    else:
+                        st.write("Image cannot be generated!")
 
                 with col2:
                     keywords = get_keywords(transcript)
