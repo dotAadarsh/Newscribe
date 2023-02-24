@@ -11,13 +11,13 @@ st.set_page_config(
     layout="centered",
     initial_sidebar_state="expanded",
     menu_items={
-        'Get Help': 'https://www.extremelycoolapp.com/help',
-        'Report a bug': "https://www.extremelycoolapp.com/bug",
+        'Get Help': 'https://twitter.com/DotAadarsh',
+        'Report a bug': "https://github.com/dotAadarsh/Newscribe/discussions/1",
         'About': "Newscribe is an AI-powered app that transcribes news videos into written blog posts, simplifying content creation for bloggers and news writers."
     })
 
 
-openai.yt_api_key = st.secrets["OPEN_AI_API"]
+openai.api_key = st.secrets["OPEN_AI_API"]
 
 st.title("Newscriber")
 st.caption("Bringing news to life, one story at a time.")
